@@ -48,6 +48,6 @@ DB_NAME=sms_db
 Run the Project
 1. Open the Project in Browser
 Make sure Apache and MySQL are running in XAMPP.
-Open your browser and go to: http://localhost/example
+Open your browser and go to: http://localhost/name of your folder or project
 
 SET UP COMPLETE!
