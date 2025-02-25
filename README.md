@@ -40,6 +40,11 @@ Configure the Environment File (.env)
 Open the project folder and create a .env file.
 Add database connection details:
 
+DB_HOST=localhost
+DB_USER= "root"
+DB_PASS= " "
+DB_NAME=sms_db
+
 Run the Project
 1. Open the Project in Browser
 Make sure Apache and MySQL are running in XAMPP.
