@@ -1,3 +1,17 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "student_registration";
+
+$conn = new mysqli($servername, $username, $password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -88,6 +102,5 @@
         });
     </script>
 
-    <script src="script.js"></script>
 </body>
 </html>
