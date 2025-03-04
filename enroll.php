@@ -77,7 +77,6 @@
             <button type="submit" class="submit-btn">Submit</button>
         </form>
     </div>
-    <script src="enroll.js"></script>
 
 </body>
 </html>
