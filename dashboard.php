@@ -52,7 +52,7 @@ $student_id = $_SESSION['student_id'];
         </div>
 
         <div class="dashboard-content">
-            <h1>Welcome, Students! 🎉</h1>
+             <h1>Welcome, <?php echo htmlspecialchars($last_name); ?>! 🎉</h1>
             <p>Manage your academic journey with ease.</p>
         </div>
     </div>
