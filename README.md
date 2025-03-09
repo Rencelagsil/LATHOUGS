@@ -50,4 +50,4 @@ Run the Project
 Make sure Apache and MySQL are running in XAMPP.
 Open your browser and go to: http://localhost/name of your folder or project
 
-SET UP COMPLETE!
+SET UP COMPLETE! hakdog
