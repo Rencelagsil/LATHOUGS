@@ -1,5 +1,5 @@
 # SMS-STUDENT-MANAGEMENT-SYSTEM
-POJECT DETAILS - The Student Management System (SMS) for Senior High School (SHS) students of Lathougs University is a web-based platform designed to provide students with an easy way to access their academic and financial records. The system allows students to self-enroll, log in securely, and view essential information such as grades, account balance, class schedule, and subjects.
+POJECT DETAILS - The Student Management System (SMS) for Senior High School (SHS) students of Lathougs University is a web-based platform designed to provide students with an easy way to access their academic and financial records. The system allows students to self-enroll, log in securely, and view essential information such as Grades, Subjects & Class Schedule, Accounts Balances and Permits.
 
 Setup Instructions for SMS (SHS Students of Lathougs University)
 This guide provides set up instructions to set up the Student Management System (SMS) using GitHub for version control and XAMPP for the database server.
