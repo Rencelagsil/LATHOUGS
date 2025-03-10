@@ -15,60 +15,21 @@
         <h1>Welcome to <br> Lathougs University</h1>
     </div>
 
-    <!-- Registration Form -->
-    <div class="container box" id="signUp" style="display: none;">
-      <h1 class="form-title">Enroll</h1>
-      <form method="post" action="register.php">
-        
-        <div class="input-group">
-          <i class="fas fa-user"></i>
-          <input type="text" name="lName" id="lName" placeholder="Last Name" required>
-          <label for="lName">Last Name</label>
-        </div>
-
-        <div class="input-group">
-           <i class="fas fa-user"></i>
-           <input type="text" name="fName" id="fName" placeholder="First Name" required>
-           <label for="fName">First Name</label>
-        </div>
-
-        <div class="input-group">
-          <i class="fas fa-id-card"></i>
-          <input type="text" name="studentID" id="studentID" placeholder="Student ID" required>
-          <label for="studentID">Student ID</label>
-        </div>
-
-        <input type="submit" class="btn" value="Enroll" name="submit"> 
-
-      </form>
-
-      <div class="Links">
-        <p>Already have an account?</p>
-        <button id="logInButton">Log In</button>
-      </div>
-    </div>
-
     <!-- Login Form -->
     <div class="container box" id="signIn">
-      <h1 class="form-title">Welcome Students</h1>
+      <h1 class="form-title">Welcome Students!</h1>
       <form method="post" action="login.php">
         
-        <div class="input-group">
-          <i class="fas fa-user"></i>
-          <input type="text" name="lName" id="lNameLogin" placeholder="Last Name" required>
-          <label for="lNameLogin">Last Name</label>
-        </div>
-
-        <div class="input-group">
-          <i class="fas fa-user"></i>
-          <input type="text" name="fName" id="fNameLogin" placeholder="First Name" required>
-          <label for="fNameLogin">First Name</label>
-        </div>
-
         <div class="input-group">
           <i class="fas fa-id-card"></i>
           <input type="text" name="studentID" id="studentIDLogin" placeholder="Student ID" required>
           <label for="studentIDLogin">Student ID</label>
+        </div>
+
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" name="password" id="passwordLogin" placeholder="Password" required>
+          <label for="passwordLogin">Password</label>
         </div>
 
         <input type="submit" class="btn" value="Log In" name="submit"> 
@@ -77,12 +38,12 @@
 
       <div class="Links">
         <p>Don't have an account?</p>
-        <button id="signUpButton">Enroll</button>  <!-- Redirect to enroll.php -->
+        <button id="signUpButton">Enroll</button>  
       </div>
     </div>
 
     <script>
-        // Redirect "Enroll" button in the Login Form to enroll.php
+        // Redirect to enroll.php when "Enroll" button is clicked
         document.getElementById("signUpButton").addEventListener("click", function() {
             window.location.href = "enroll.php";
         });
