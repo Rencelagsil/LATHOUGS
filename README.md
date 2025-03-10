@@ -29,7 +29,7 @@ Open phpMyAdmin by visiting:
 
 http://localhost/phpmyadmin
 
-Click New, enter sms_db, and click Create.
+Click New, enter your database name, and click Create.
 Import the database structure:
 Go to the database/ folder in your project.
 Open sms_db.sql in a text editor.
