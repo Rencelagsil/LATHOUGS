@@ -1,56 +1,65 @@
 <?php
-session_start(); // Start the session
+session_start(); 
 
 $servername = "localhost";
 $username = "root";
 $password = "";
 $database = "student_registration";
 
-// Create a connection
 $conn = new mysqli($servername, $username, $password, $database);
 
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Process form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $last_name = $_POST['lName'] ?? "";
-    $first_name = $_POST['fName'] ?? "";
     $student_id = $_POST['studentID'] ?? "";
+    $password_input = $_POST['password'] ?? "";
 
-    $stmt = $conn->prepare("SELECT * FROM students WHERE last_name = ? AND first_name = ? AND student_id = ?");
-    $stmt->bind_param("sss", $last_name, $first_name, $student_id);
-    $stmt->execute();
-    
-    $result = $stmt->get_result();
+    // Default password
+    $default_password = "Lathougs";
 
-    if ($result->num_rows > 0) {
+    // Check if the entered password matches the default password
+    if ($password_input === $default_password) {
         
-        $user = $result->fetch_assoc();
-        $_SESSION['student_id'] = $user['student_id'];
-        $_SESSION['first_name'] = $user['first_name'];
-        $_SESSION['last_name'] = $user['last_name'];
+        // Verify if Student ID exists in the `students` table
+        $stmt = $conn->prepare("SELECT * FROM students WHERE student_id = ?");
+        $stmt->bind_param("s", $student_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-          
-        $insertStmt = $conn->prepare("INSERT INTO login (last_name, first_name, student_id) VALUES (?, ?, ?)");
-        $insertStmt->bind_param("sss", $last_name, $first_name, $student_id);
-        
-        if ($insertStmt->execute()) {
-            // Redirect to Dashboard after successful login
+        if ($result->num_rows > 0) {
+            $user = $result->fetch_assoc();
+
+            $_SESSION['student_id'] = $user['student_id'];
+
+            // Check if student ID already exists in `login` table
+            $checkStmt = $conn->prepare("SELECT * FROM login WHERE student_id = ?");
+            $checkStmt->bind_param("s", $student_id);
+            $checkStmt->execute();
+            $checkResult = $checkStmt->get_result();
+
+            if ($checkResult->num_rows === 0) {
+                // If student ID doesn't exist, insert new record
+                $insertStmt = $conn->prepare("INSERT INTO login (student_id, password) VALUES (?, ?)");
+                $insertStmt->bind_param("ss", $student_id, $default_password);
+                $insertStmt->execute();
+                $insertStmt->close();
+            }
+
+            $checkStmt->close();
+            $stmt->close();
+
+            // Redirect to dashboard
             header("Location: dashboard.php");
             exit();
         } else {
-            echo "<script>alert('Failed to save login details.'); window.location.href='index.php';</script>";
+            echo "<script>alert('Student ID not found. Please try again.'); window.location.href='index.php';</script>";
         }
 
-        $insertStmt->close();
     } else {
-        echo "<script>alert('Invalid credentials. Please try again.'); window.location.href='index.php';</script>";
+        echo "<script>alert('Incorrect password.'); window.location.href='index.php';</script>";
     }
-
-    $stmt->close();
 }
 
 $conn->close();
