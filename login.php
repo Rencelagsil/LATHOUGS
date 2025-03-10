@@ -20,7 +20,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $first_name = $_POST['fName'] ?? "";
     $student_id = $_POST['studentID'] ?? "";
 
-    // Prevent SQL Injection
     $stmt = $conn->prepare("SELECT * FROM students WHERE last_name = ? AND first_name = ? AND student_id = ?");
     $stmt->bind_param("sss", $last_name, $first_name, $student_id);
     $stmt->execute();
@@ -28,15 +27,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        // User found, start session
+        
         $user = $result->fetch_assoc();
         $_SESSION['student_id'] = $user['student_id'];
         $_SESSION['first_name'] = $user['first_name'];
         $_SESSION['last_name'] = $user['last_name'];
 
-        // Redirect to Dashboard
-        header("Location: dashboard.php");
-        exit();
+          
+        $insertStmt = $conn->prepare("INSERT INTO login (last_name, first_name, student_id) VALUES (?, ?, ?)");
+        $insertStmt->bind_param("sss", $last_name, $first_name, $student_id);
+        
+        if ($insertStmt->execute()) {
+            // Redirect to Dashboard after successful login
+            header("Location: dashboard.php");
+            exit();
+        } else {
+            echo "<script>alert('Failed to save login details.'); window.location.href='index.php';</script>";
+        }
+
+        $insertStmt->close();
     } else {
         echo "<script>alert('Invalid credentials. Please try again.'); window.location.href='index.php';</script>";
     }
