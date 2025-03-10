@@ -7,8 +7,9 @@ if (!isset($_SESSION['student_id'])) {
     exit();
 }
 
-$first_name = $_SESSION['first_name'];
-$last_name = $_SESSION['last_name'];
+// Retrieve session variables
+$first_name = $_SESSION['first_name'] ?? "Student";
+$last_name = $_SESSION['last_name'] ?? "";
 $student_id = $_SESSION['student_id'];
 ?>
 
@@ -22,7 +23,7 @@ $student_id = $_SESSION['student_id'];
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Sidebar -->
+  
     <div class="sidebar">
         <div class="logo">
             <img src="logos.png" alt="Lathougs Uni Logo">
@@ -36,13 +37,12 @@ $student_id = $_SESSION['student_id'];
         <button class="menu-btn"><span class="icon">📝</span> Permits</button>
     </div>
 
-    <!-- Main Content -->
     <div class="main-content">
         <div class="header">
             <div class="profile-section">
                 <div>
-                    <h3></h3>
-                    <p></p>
+                    <h3><?php echo htmlspecialchars($first_name . " " . $last_name); ?></h3>
+                    <p>Student ID: <?php echo htmlspecialchars($student_id); ?></p>
                 </div>
             </div>
             <div class="header-buttons">
@@ -52,14 +52,14 @@ $student_id = $_SESSION['student_id'];
         </div>
 
         <div class="dashboard-content">
-             <h1>Welcome, <?php echo htmlspecialchars($last_name); ?>! 🎉</h1>
+        <h1>Welcome, <?php echo htmlspecialchars(ucwords($last_name)); ?>! 🎉</h1>
             <p>Manage your academic journey with ease.</p>
         </div>
     </div>
 
     <script>
         function logout() {
-            window.location.href = "index.php"; // Redirect to login page
+            window.location.href = "index.php"; 
         }
     </script>
 </body>
