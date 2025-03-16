@@ -41,9 +41,8 @@ $student_id = $_SESSION['student_id'];
         <div class="header">
             <div class="profile-section">
                 <div>
-                    <h3><?php echo htmlspecialchars($first_name . " " . $last_name); ?></h3>
                     <p>Student ID: <?php echo htmlspecialchars($student_id); ?></p>
-                </div>
+             </div>
             </div>
             <div class="header-buttons">
                 <button class="edit-profile">Edit Profile</button>
@@ -52,7 +51,7 @@ $student_id = $_SESSION['student_id'];
         </div>
 
         <div class="dashboard-content">
-        <h1>Welcome, <?php echo htmlspecialchars(ucwords($last_name)); ?>! 🎉</h1>
+        <h1>Welcome, Students! 🎉</h1>
             <p>Manage your academic journey with ease.</p>
         </div>
     </div>
