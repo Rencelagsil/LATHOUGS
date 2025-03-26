@@ -20,10 +20,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#admission">Admission</a></li>
-                <li class="dropdown">
-                    <a href="#"><i class="fas fa-sign-in-alt"></i> Login</a>
-
-                </li>
+                 <a href="index.php"><i class="fas fa-sign-in-alt"></i> Login</a></li>
             </ul>
         </nav>
     </header>
