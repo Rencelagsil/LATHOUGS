@@ -133,7 +133,7 @@ table th {
 }
 
 .submit-btn {
-    background: linear-gradient(to right, #8A2BE2, #4169E1);
+    background: #0066cc; 
     color: white;
     padding: 12px;
     border: none;
@@ -146,5 +146,5 @@ table th {
 }
 
 .submit-btn:hover {
-    background: linear-gradient(to right, #7A1BE2, #3159E1);
+    background: #005bb5; 
 }
