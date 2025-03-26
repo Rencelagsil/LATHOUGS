@@ -14,8 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener("scroll", handleScroll);
     handleScroll();
 
-    // Sticky Navbar Function
-    window.addEventListener("scroll", function() {
+     window.addEventListener("scroll", function() {
         const header = document.querySelector("header");
         if (window.scrollY > 50) {
             header.classList.add("sticky");
@@ -24,8 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // Smooth Scrolling for Navigation Links
-    document.querySelectorAll("nav ul li a").forEach(anchor => {
+    document.querySelectorAll("nav ul li a[href^='#']").forEach(anchor => {
         anchor.addEventListener("click", function(event) {
             event.preventDefault();
             const targetId = this.getAttribute("href").substring(1);
@@ -39,28 +37,11 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // Functionality for Home, About, Admission, and Login
-    document.getElementById("home-link").addEventListener("click", function() {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-
-    document.getElementById("about-link").addEventListener("click", function() {
-        const aboutSection = document.getElementById("about");
-        if (aboutSection) {
-            aboutSection.scrollIntoView({ behavior: "smooth" });
-        }
-    });
-
-    document.getElementById("admission-link").addEventListener("click", function() {
-        const admissionSection = document.getElementById("admission");
-        if (admissionSection) {
-            admissionSection.scrollIntoView({ behavior: "smooth" });
-        }
-    });
-
-    // Student and Teacher Login Redirection
-    document.getElementById("student-login").addEventListener("click", function() {
-        window.location.href = "index.php"; // Redirect to Student Login
-    });
-
+    const studentLogin = document.getElementById("student-login");
+    if (studentLogin) {
+        studentLogin.addEventListener("click", function(event) {
+            event.preventDefault();
+            window.location.href = "index.php";
+        });
+    }
 });
