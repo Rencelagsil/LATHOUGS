@@ -10,12 +10,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $middle_name = $_POST['mName'];
     $last_name = $_POST['lName'];
     $strand = $_POST['strand'];
+    $semester = $_POST['semester'];
     $level = $_POST['level'];
 
-    $sql = "UPDATE students SET first_name='$first_name', middle_name='$middle_name', last_name='$last_name', strand='$strand', level='$level' WHERE id=$id";
+    // Corrected SQL query with proper quote for 'semester' field
+    $sql = "UPDATE students SET first_name='$first_name', middle_name='$middle_name', last_name='$last_name', strand='$strand', semester='$semester', level='$level' WHERE id=$id";
 
     if ($conn->query($sql) === TRUE) {
-        echo "<script>alert('Student Updated Successfully'); window.location.href='admin.php';</script>";
+        echo "<script>alert('Successfully Updated!'); window.location.href='admin.php';</script>";
     }
 }
 ?>
@@ -32,6 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="text" name="fName" value="<?= $row['first_name'] ?>" required>
         <input type="text" name="mName" value="<?= $row['middle_name'] ?>">
         <input type="text" name="lName" value="<?= $row['last_name'] ?>" required>
+        
         <select name="strand">
             <option value="<?= $row['strand'] ?>"><?= $row['strand'] ?></option>
             <option value="ABM">ABM</option>
@@ -40,12 +43,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <option value="GAS">GAS</option>
             <option value="TVL">TVL</option>
         </select>
+        
+        <select name="semester">
+            <option value="<?= $row['semester'] ?>"><?= $row['semester'] ?></option>
+            <option value="1st Semester">1st Semester</option>
+            <option value="2nd Semester">2nd Semester</option>
+        </select>
+        
         <select name="level">
             <option value="<?= $row['level'] ?>"><?= $row['level'] ?></option>
             <option value="Grade 11">Grade 11</option>
             <option value="Grade 12">Grade 12</option>
         </select>
+        
         <button type="submit">Update</button> 
     </form>
 </body>
-</html>
+</html> 
