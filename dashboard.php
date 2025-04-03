@@ -41,7 +41,7 @@ $student_id = $_SESSION['student_id'];
         <div class="header">
             <div class="profile-section">
                 <div>
-                    <p>Student ID: <?php echo htmlspecialchars($student_id); ?></p>
+                    <p>LRN: <?php echo htmlspecialchars($student_id); ?></p>
              </div>
             </div>
             <div class="header-buttons">
