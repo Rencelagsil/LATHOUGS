@@ -20,6 +20,7 @@
                     <td>${s.student_id}</td>
                     <td>${s.email}</td>
                     <td>${s.strand}</td>
+                     <td>${s.semester}</td>
                     <td>${s.level}</td>
                     <td>
                         <a href="edit_student.php?id=${s.id}" class="btn edit-btn">Edit</a>
@@ -46,6 +47,7 @@
                     <th>Student ID</th>
                     <th>Email</th>
                     <th>Strand</th>
+                    <th>Semester</th>
                     <th>Level</th>
                     <th>Actions</th>
                 </tr>
