@@ -25,9 +25,9 @@ switch ($method) {
     case 'POST':
         // Insert a new student
         $data = json_decode(file_get_contents("php://input"));
-        $stmt = $conn->prepare("INSERT INTO students (first_name, middle_name, last_name, birthdate, student_id, street_address, city, state_province, country, zip_code, email, strand, level) 
-                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssssssssssss", $data->first_name, $data->middle_name, $data->last_name, $data->birthdate, $data->student_id, $data->street_address, $data->city, $data->state_province, $data->country, $data->zip_code, $data->email, $data->strand, $data->level);
+        $stmt = $conn->prepare("INSERT INTO students (first_name, middle_name, last_name, birthdate, student_id, street_address, city, state_province, country, zip_code, email, strand, semester, level) 
+                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssssssssssss", $data->first_name, $data->middle_name, $data->last_name, $data->birthdate, $data->student_id, $data->street_address, $data->city, $data->state_province, $data->country, $data->zip_code, $data->email, $data->strand, $data->semester, $data->level);
         if ($stmt->execute()) {
             echo json_encode(["message" => "Student created successfully"]);
         } else {
@@ -39,8 +39,8 @@ switch ($method) {
         // Update an existing student
         if ($id) {
             $data = json_decode(file_get_contents("php://input"));
-            $stmt = $conn->prepare("UPDATE students SET first_name=?, middle_name=?, last_name=?, birthdate=?, student_id=?, street_address=?, city=?, state_province=?, country=?, zip_code=?, email=?, strand=?, level=? WHERE id=$id");
-            $stmt->bind_param("sssssssssssss", $data->first_name, $data->middle_name, $data->last_name, $data->birthdate, $data->student_id, $data->street_address, $data->city, $data->state_province, $data->country, $data->zip_code, $data->email, $data->strand, $data->level);
+            $stmt = $conn->prepare("UPDATE students SET first_name=?, middle_name=?, last_name=?, birthdate=?, student_id=?, street_address=?, city=?, state_province=?, country=?, zip_code=?, email=?, strand=?, semester=?, level=? WHERE id=$id");
+            $stmt->bind_param("ssssssssssssss", $data->first_name, $data->middle_name, $data->last_name, $data->birthdate, $data->student_id, $data->street_address, $data->city, $data->state_province, $data->country, $data->zip_code, $data->email, $data->strand, $data->semester, $data->level);
             if ($stmt->execute()) {
                 echo json_encode(["message" => "Student updated successfully"]);
             } else {
