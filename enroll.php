@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,16 +16,35 @@
             <h1>Student Registration Form</h1>
             <p>Fill out the form to access the SMS and view your records.</p>
         </div>
-        <form action="register.php" method="POST">
+        <form action="register.php" method="POST" id="registrationForm">
+            
             <h2>Student Information</h2>
             <div class="form-group">
                 <input type="text" name="fName" placeholder="First Name" required>
                 <input type="text" name="mName" placeholder="Middle Name">
                 <input type="text" name="lName" placeholder="Last Name" required>
             </div>
+
+            <!-- Gender Selection (Dropdown) -->
+            <h2>Gender</h2>
             <div class="form-group">
-                <input type="date" name="birthdate" required>
-                <input type="text" name="studentID" placeholder="Student ID" required>
+                <select name="gender" id="gender" required>
+                    <option value="" disabled selected>Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+
+            <!-- Birthdate Validation -->
+            <h2>Birthdate</h2>
+            <div class="form-group">
+                <input type="date" id="birthdate" name="birthdate" required>
+            </div>
+
+            <!-- Student ID Validation -->
+            <h2>Student ID</h2>
+            <div class="form-group">
+                <input type="text" id="studentID" name="studentID" placeholder="12-digit Student ID/LRN" required>
             </div>
 
             <h2>Address</h2>
@@ -47,10 +65,11 @@
                 <input type="email" name="email" placeholder="E-mail" required>
             </div>
 
-            <h2>Strand</h2>
+            <h2>Academic Information</h2>
             <table>
                 <tr>
                     <th>Strand</th>
+                    <th>Semester</th>
                     <th>Level</th>
                 </tr>
                 <tr>
@@ -64,6 +83,16 @@
                             <option value="TVL">TVL</option>
                         </select>
                     </td>
+
+                    <!-- Semester Selection (Dropdown) -->
+                    <td>
+                        <select name="semester" required>
+                            <option value="" disabled selected>Select Semester</option>
+                            <option value="1st Semester">1st Semester</option>
+                            <option value="2nd Semester">2nd Semester</option>
+                        </select>
+                    </td>
+
                     <td>
                         <select name="level" required>
                             <option value="" disabled selected>Select Level</option>
@@ -79,6 +108,8 @@
 
         </form>
     </div>
+
+    <script src="enroll.js"></script>
 
 </body>
 </html>
