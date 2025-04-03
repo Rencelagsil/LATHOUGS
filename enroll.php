@@ -37,15 +37,19 @@
 
             <!-- Birthdate Validation -->
             <h2>Birthdate</h2>
-            <div class="form-group">
-                <input type="date" id="birthdate" name="birthdate" required>
-            </div>
+<div class="form-group">
+    <input type="date" id="birthdate" name="birthdate" required>
+    <div id="birthdateError" style="color: red; font-size: 12px;"></div> <!-- Error message container -->
+</div>
+
 
             <!-- Student ID Validation -->
-            <h2>Student ID</h2>
-            <div class="form-group">
-                <input type="text" id="studentID" name="studentID" placeholder="12-digit Student ID/LRN" required>
-            </div>
+            <h2>Student ID/LRN</h2>
+<div class="form-group">
+    <input type="text" id="studentID" name="studentID" placeholder="Student ID/LRN" required>
+    <div id="studentIDError" style="color: red; font-size: 12px;"></div> <!-- Error message container -->
+</div>
+
 
             <h2>Address</h2>
             <div class="form-group">
@@ -103,7 +107,7 @@
                 </tr>
             </table>
 
-            <button type="submit" class="submit-btn">Submit</button>
+            <button type="submit" class="submit-btn">Register</button>
             <button type="button" class="back-btn" onclick="window.location.href='index.php';">Back</button>
 
         </form>

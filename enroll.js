@@ -1,54 +1,64 @@
-document.addEventListener("DOMContentLoaded", function () {
-    let birthdateInput = document.getElementById("birthdate");
-    let birthdateError = document.getElementById("birthdateError");
-    let studentIDInput = document.getElementById("studentID");
-    let studentIDError = document.getElementById("studentIDError");
+// Student ID validation (ensures 12 digits only)
+document.getElementById('registrationForm').addEventListener('submit', function(event) {
+    var studentID = document.getElementById("studentID").value;
+    var errorMessage = document.getElementById("studentIDError");
 
-    // Set max birthdate to today
-    let today = new Date().toISOString().split("T")[0];
-    birthdateInput.setAttribute("max", today);
+    // Remove any non-numeric characters
+    studentID = studentID.replace(/\D/g, '');
 
-    // Set minimum birthdate to January 1, 2010
-    let minDate = "2010-01-01";
-    birthdateInput.setAttribute("min", minDate);
+    // Check if the student ID is exactly 12 digits
+    if (studentID.length !== 12) {
+        errorMessage.textContent = "Student ID must be exactly 12 digits.";
+        event.preventDefault();  // Prevent form submission if not exactly 12 digits
+    } else {
+        errorMessage.textContent = ""; // Clear the error message if valid
+    }
 
-    // Validate birthdate input
-    birthdateInput.addEventListener("change", function () {
-        let selectedDate = new Date(birthdateInput.value);
-        let minAllowedDate = new Date(minDate);
-        let todayDate = new Date();
+    // Proceed with birthdate validation after student ID check
+    var birthdate = document.getElementById('birthdate').value;
+    var birthYear = new Date(birthdate).getFullYear();
+    var birthdateErrorMessage = document.getElementById('birthdateError');
+    var currentYear = new Date().getFullYear();
+    
+    // Check if the birthdate is valid
+    if (isNaN(new Date(birthdate).getTime())) {
+        birthdateErrorMessage.textContent = "Please enter a valid birthdate.";
+        event.preventDefault();  // Prevent form submission
+        return;
+    }
 
-        if (selectedDate > todayDate) {
-            birthdateError.textContent = "Birthdate cannot be in the future.";
-            birthdateInput.style.border = "2px solid red";
-        } else if (selectedDate < minAllowedDate) {
-            birthdateError.textContent = "Birth year must be 2010 or later.";
-            birthdateInput.style.border = "2px solid red";
-        } else {
-            birthdateError.textContent = "";
-            birthdateInput.style.border = "2px solid green";
-        }
-    });
+    // Check if the birth year is in the future
+    if (birthYear > currentYear) {
+        birthdateErrorMessage.textContent = "The birthdate cannot be from the future.";
+        event.preventDefault();  // Prevent form submission
+        return;
+    }
 
-    // Validate Student ID (must be 12 digits)
-    studentIDInput.addEventListener("input", function () {
-        let studentIDValue = studentIDInput.value.trim();
-        let regex = /^\d{12}$/;
+    // Optional: Check for unrealistic birth years
+    if (birthYear < 1900 || birthYear > currentYear) {
+        birthdateErrorMessage.textContent = "Please enter a realistic birthdate.";
+        event.preventDefault();  // Prevent form submission
+        return;
+    }
 
-        if (!regex.test(studentIDValue)) {
-            studentIDError.textContent = "Student ID/LRN must be exactly 12 digits.";
-            studentIDInput.style.border = "2px solid red";
-        } else {
-            studentIDError.textContent = "";
-            studentIDInput.style.border = "2px solid green";
-        }
-    });
+    birthdateErrorMessage.textContent = "";  // Clear any existing error message
+});
 
-    // Prevent form submission if validations fail
-    document.getElementById("registrationForm").addEventListener("submit", function (event) {
-        if (birthdateError.textContent || studentIDError.textContent) {
-            event.preventDefault();
-            alert("Please fix the errors before submitting the form.");
-        }
-    });
+// Real-time validation for student ID (check when user types)
+document.getElementById("studentID").addEventListener("input", function() {
+    var studentID = document.getElementById("studentID").value;
+    var errorMessage = document.getElementById("studentIDError");
+
+    // Remove any non-numeric characters
+    studentID = studentID.replace(/\D/g, '');
+
+    // Check if the student ID is exactly 12 digits
+    if (studentID.length !== 12) {
+        errorMessage.textContent = "Student ID must be exactly 12 digits.";
+    } else {
+        errorMessage.textContent = ""; // Clear the error message if valid
+    }
+
+    // Update the input field with only numeric characters
+    document.getElementById("studentID").value = studentID;
 });
