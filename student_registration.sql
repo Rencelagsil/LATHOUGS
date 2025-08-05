@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2025 at 04:18 AM
+-- Generation Time: Aug 05, 2025 at 05:12 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -64,7 +64,7 @@ CREATE TABLE `grades` (
 --
 
 INSERT INTO `grades` (`id`, `student_id`, `subject`, `grade`) VALUES
-(62, 231160010104, 'Math', '90');
+(65, 231160010104, 'Math', '86');
 
 -- --------------------------------------------------------
 
@@ -139,7 +139,7 @@ CREATE TABLE `schedules` (
 --
 
 INSERT INTO `schedules` (`id`, `student_id`, `subject`, `day`, `time`, `room`) VALUES
-(21, '231160010104', 'Arts', 'Friday', '1pm to 2pm', 'fgm104');
+(21, '231160010104', 'Arts', 'Friday', '1pm to 2pm', 'fgm103');
 
 -- --------------------------------------------------------
 
@@ -183,7 +183,7 @@ CREATE TABLE `students` (
 INSERT INTO `students` (`id`, `student_type`, `fName`, `mName`, `lName`, `extName`, `birthdate`, `age`, `place`, `student_id`, `religion`, `gender`, `street`, `city`, `state`, `country`, `zip`, `email`, `contactNumber`, `strand`, `level`, `semester`, `school_year`, `is_approved`, `registered_at`, `profile_pic`) VALUES
 (10, 'Old Student', 'Justine', '', 'Moril', '', '2004-08-12', 20, '', '231160010215', '', '', '', '', '', '', '', 'ffauzi@gmail.com', '09071787235', 'GAS', 'Grade 11', '1st Semester', '', 'approved', '2025-04-23 14:41:22', 'profile.png'),
 (11, 'New Student', 'Johar', '', 'Gogo', '', '2005-08-12', 19, 'Polomolok', '231160010218', 'ambot', 'Male', 'Polomolok, South Cotabato', 'Polomolok', 'South Cotabato', 'Philippines', '9504', 'ffauzi@gmail.com', '09071787231', 'GAS', 'Grade 11', '2nd Semester', '2026-2027', 'approved', '2025-04-23 14:43:39', 'profile.png'),
-(43, 'Old Student', 'Benjie', '', 'Glenogo', '', '2004-08-12', 0, '', '231160010104', '', '', '', '', '', '', '', 'benjie@gmail.com', '09359544536', 'HUMSS', 'Grade 11', '1st Semester', '', 'approved', '2025-05-30 14:46:03', 'profile_6845299d0bc191.54438078.jpeg');
+(43, 'Old Student', 'Benjie', '', 'Glenogo', '', '2004-08-12', 0, '', '231160010104', '', '', '', '', '', '', '', 'lagsilrence@gmail.com', '09359544536', 'HUMSS', 'Grade 11', '1st Semester', '', 'approved', '2025-05-30 14:46:03', 'profile_6845299d0bc191.54438078.jpeg');
 
 -- --------------------------------------------------------
 
@@ -206,8 +206,7 @@ CREATE TABLE `teachers` (
 --
 
 INSERT INTO `teachers` (`id`, `fName`, `mName`, `lName`, `email`, `contact`, `subject`) VALUES
-(1, 'Jason', '', 'Cruz', 'jasoncruz@gmail.com', '09071787237', 'Math'),
-(11, 'Justine', NULL, '', 'lagsilrence@gmail.com', NULL, NULL);
+(1, 'Jason', '', 'Cruz', 'jasoncruz@gmail.com', '09071787237', 'Math');
 
 -- --------------------------------------------------------
 
@@ -227,7 +226,8 @@ CREATE TABLE `teacher_login` (
 
 INSERT INTO `teacher_login` (`id`, `email`, `password`) VALUES
 (2, 'jasoncruz@gmail.com', 'Lathougs'),
-(5, 'lagsilrence@gmail.com', 'Lathougs');
+(5, 'lagsilrence@gmail.com', 'Lathougs'),
+(6, 'reankent00@gmail.com', 'Lathougs');
 
 -- --------------------------------------------------------
 
@@ -246,7 +246,6 @@ CREATE TABLE `teacher_schedule` (
 --
 
 INSERT INTO `teacher_schedule` (`id`, `email`, `section`) VALUES
-(2, 'lagsilrence@gmail.com', 'GAS - A'),
 (3, 'jasoncruz@gmail.com', 'STEM - B');
 
 --
@@ -322,7 +321,7 @@ ALTER TABLE `account_balance`
 -- AUTO_INCREMENT for table `grades`
 --
 ALTER TABLE `grades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `login`
@@ -352,13 +351,13 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `teacher_login`
 --
 ALTER TABLE `teacher_login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `teacher_schedule`
